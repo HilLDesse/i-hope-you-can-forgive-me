@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffe6ea; /* Warna pink pastel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden; /* Supaya layarnya gak bisa di-scroll saat tombol lari */
+}
+
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 90%;
+}
+
+h1 {
+    color: #ff4d6d;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+.message {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative; /* Penting untuk interaksi tombol */
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#btn-yes {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+#btn-yes:hover {
+    background-color: #e63956;
+    transform: scale(1.1);
+}
+
+#btn-no {
+    background-color: #ccc;
+    color: #333;
+    position: relative; /* Posisi relatif awalnya */
+}
+
+.hidden {
+    display: none !important;
+}
