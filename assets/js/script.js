@@ -1,15 +1,12 @@
 // --- KONFIGURASI EMAIL FORM SUBMIT ---
-// Masukkan email aktif kamu di bawah ini (Biarkan tanda kutipnya tetap ada)
-const emailPenerima = "hilmikaut@gmail.com"; 
+const emailPenerima = "EMAIL_KAMU_DISINI@gmail.com"; 
 
-// Mengambil elemen Scene
 const scene1 = document.getElementById('scene-1');
 const scene2 = document.getElementById('scene-2');
 const scene3 = document.getElementById('scene-3');
 const scene4 = document.getElementById('scene-4');
 const scene5 = document.getElementById('scene-5');
 
-// Mengambil elemen Tombol & Input
 const btnNext1 = document.getElementById('btn-next-1');
 const btnNext2 = document.getElementById('btn-next-2');
 const btnNext3 = document.getElementById('btn-next-3');
@@ -17,11 +14,10 @@ const btnYes = document.getElementById('btn-yes');
 const btnNo = document.getElementById('btn-no');
 const inputCurhatan = document.getElementById('curhatan');
 
-// Variabel Data
 let keluhKesahText = "";
 let historyTombol = []; 
 
-// Fungsi Transisi Antar Halaman
+// Fungsi Pindah Halaman (Dipercepat untuk nuansa aplikasi mobile)
 function changeScene(currentScene, nextScene) {
     currentScene.classList.remove('visible');
     currentScene.classList.add('hidden');
@@ -33,11 +29,10 @@ function changeScene(currentScene, nextScene) {
         setTimeout(() => {
             nextScene.classList.remove('hidden');
             nextScene.classList.add('visible');
-        }, 50);
-    }, 800);
+        }, 30);
+    }, 600); // Waktu transisi disesuaikan
 }
 
-// Navigasi Tombol Lanjut
 btnNext1.addEventListener('click', () => changeScene(scene1, scene2));
 btnNext2.addEventListener('click', () => changeScene(scene2, scene3));
 
@@ -49,7 +44,7 @@ btnNext3.addEventListener('click', () => {
     changeScene(scene3, scene4);
 });
 
-// Logika Tombol "Gak" (Berubah teks)
+// Logika Tombol "Gak" (Berubah teks, responsif sentuh)
 const teksMohon = [
     "Pliss maafin aku 🥺", 
     "Beneran gak mau? 😭", 
@@ -65,9 +60,9 @@ btnNo.addEventListener('click', () => {
     btnNo.innerText = teksMohon[noClickCount % teksMohon.length];
     noClickCount++;
     
-    // Animasi getar kecil
-    btnNo.style.transform = "translateX(5px)";
-    setTimeout(() => btnNo.style.transform = "translateX(-5px)", 50);
+    // Animasi getar untuk tombol
+    btnNo.style.transform = "translateX(10px)";
+    setTimeout(() => btnNo.style.transform = "translateX(-10px)", 50);
     setTimeout(() => btnNo.style.transform = "translateX(0)", 100);
 });
 
@@ -97,7 +92,6 @@ btnYes.addEventListener('click', () => {
         changeScene(scene4, scene5);
     })
     .catch(error => {
-        console.error("Gagal mengirim", error);
         changeScene(scene4, scene5);
     });
 });
