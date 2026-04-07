@@ -1,0 +1,41 @@
+/* Efek Transisi Halaman */
+.scene {
+    transition: all 0.8s ease;
+    backface-visibility: hidden;
+}
+
+.visible {
+    display: block; opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+}
+
+.hidden {
+    display: none; opacity: 0;
+    transform: translateY(50px) rotateX(-10deg);
+}
+
+/* Efek Tombol */
+button { transition: all 0.3s ease; }
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Animasi Detak Jantung */
+.heart-icon { animation: pulse 2s infinite; }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Animasi Dekorasi Mengambang */
+.heart-decor {
+    position: absolute;
+    color: rgba(255, 77, 109, 0.2);
+    animation: float 5s infinite ease-in-out;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+    50% { transform: translateY(-100px) rotate(180deg); opacity: 0.6; }
+}
