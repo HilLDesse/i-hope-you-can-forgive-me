@@ -1,39 +1,55 @@
-/* Efek Transisi Halaman/Scene */
+/* =========================================================
+   TRANSISI SCENE (Mulus & 3D Effect)
+========================================================= */
 .scene {
-    transition: all 0.8s ease;
+    transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1); /* Cubic-bezier untuk pergerakan halus */
     backface-visibility: hidden;
+    position: absolute; /* Dibutuhkan untuk transisi bertumpuk */
+    top: 0; left: 0; width: 100%;
 }
 
 .visible {
     display: block; opacity: 1;
-    transform: translateY(0) rotateX(0deg);
+    transform: translateZ(0) translateY(0) rotateX(0deg);
 }
 
 .hidden {
     display: none; opacity: 0;
-    transform: translateY(50px) rotateX(-10deg);
+    transform: translateZ(-200px) translateY(70px) rotateX(-15deg); /* Animasi keluar 3D */
 }
 
-/* Animasi Dekorasi Hati Mengambang (Background) */
-.heart-decor {
-    position: absolute;
-    color: rgba(255, 77, 109, 0.2);
-    animation: float 5s infinite ease-in-out;
-}
 
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-    50% { transform: translateY(-100px) rotate(180deg); opacity: 0.6; }
-}
+/* =========================================================
+   ANIMASI SCENE 1 (PEMBUKA)
+========================================================= */
 
-/* Animasi Scene 1: Rotasi Cahaya Card */
+/* Rotasi Cahaya Latar Card Lambat (Glow) */
 @keyframes rotateGlow {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Animasi Scene 1: Cincin Hati Berdenyut */
+/* Cincin Hati Berdenyut Lebih Halus */
 @keyframes pulseRing {
-    0% { width: 60px; height: 60px; opacity: 1; }
-    100% { width: 150px; height: 150px; opacity: 0; }
+    0% { width: 70px; height: 70px; opacity: 1; border: 1px solid rgba(255, 77, 109, 0.4); }
+    100% { width: 160px; height: 160px; opacity: 0; border: 3px solid rgba(255, 77, 109, 0); }
+}
+
+
+/* =========================================================
+   ANIMASI DEKORASI BACKGROUND
+========================================================= */
+
+/* Hati Mengambang (Pudar & Berputar) */
+.heart-decor {
+    position: absolute;
+    color: rgba(255, 77, 109, 0.18);
+    pointer-events: none;
+    animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.18; }
+    50% { transform: translateY(-120px) rotate(180deg) scale(1.1); opacity: 0.5; }
+    100% { transform: translateY(-240px) rotate(360deg) scale(1); opacity: 0; }
 }
