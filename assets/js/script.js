@@ -6,7 +6,7 @@ const btnOpen = document.getElementById('btn-open');
 const btnYes = document.getElementById('btn-yes');
 const btnNo = document.getElementById('btn-no');
 
-// Transisi Buka Pesan
+// 1. Logika Klik 'Buka Pesan Kasih Sayang' (Dari Scene 1 ke Scene 2)
 btnOpen.addEventListener('click', () => {
     introScene.classList.remove('visible');
     introScene.classList.add('hidden');
@@ -21,7 +21,7 @@ btnOpen.addEventListener('click', () => {
     }, 800);
 });
 
-// Transisi Dimaafin
+// 2. Logika Klik 'Iya, Aku Maafin' (Dari Scene 2 ke Scene 3)
 btnYes.addEventListener('click', () => {
     mainScene.classList.remove('visible');
     mainScene.classList.add('hidden');
@@ -36,7 +36,7 @@ btnYes.addEventListener('click', () => {
     }, 800);
 });
 
-// Tombol Lari
+// 3. Logika Tombol 'Gak Mau' Lari / Menghindar
 btnNo.addEventListener('mouseover', moveButton);
 btnNo.addEventListener('touchstart', moveButton);
 
@@ -48,6 +48,7 @@ function moveButton() {
     const btnWidth = btnNo.offsetWidth;
     const btnHeight = btnNo.offsetHeight;
 
+    // Batasi area kabur agar tidak keluar dari layar
     const randomX = Math.floor(Math.random() * (windowWidth - btnWidth - 100)) + 50;
     const randomY = Math.floor(Math.random() * (windowHeight - btnHeight - 100)) + 50;
 

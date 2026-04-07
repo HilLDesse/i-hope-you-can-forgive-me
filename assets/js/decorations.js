@@ -2,7 +2,7 @@ const decorationsContainer = document.getElementById('decorations');
 
 function createDecorations() {
     const emojis = ['❤️', '💖', '🌸', '✨', '🥺'];
-    const count = 20;
+    const count = 25; // Jumlah elemen dekorasi
 
     for (let i = 0; i < count; i++) {
         const decor = document.createElement('div');
@@ -19,5 +19,5 @@ function createDecorations() {
     }
 }
 
-// Jalankan saat file ini dimuat
-createDecorations();
+// Jalankan fungsi dekorasi saat website pertama kali dibuka
+window.onload = createDecorations;
