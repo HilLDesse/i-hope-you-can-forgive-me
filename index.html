@@ -3,28 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maafin Aku Ya?</title>
+    <title>Pesan Khusus Buat Kamu ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" id="main-container">
-        <h1>Halo Sayang... 🥺</h1>
-        <p class="message">
-            Aku tau aku salah dan udah bikin kamu kesal. Aku benar-benar minta maaf ya. 
-            Aku janji bakal lebih baik lagi dan gak ngulangin kesalahan yang sama. 
-            (Silakan ganti/tambah teks ini dengan permintaan maafmu yang paling tulus).
-        </p>
-        <h2>Kamu mau kan maafin aku?</h2>
-        
-        <div class="buttons">
-            <button id="btn-yes">Iya, Aku Maafin</button>
-            <button id="btn-no">Gak Mau!</button>
-        </div>
-    </div>
+    
+    <div class="bg-decorations" id="decorations"></div>
 
-    <div class="container hidden" id="success-container">
-        <h1>Yeay! Makasih Sayang! ❤️</h1>
-        <p>I love you to the moon and back. Nanti kita jajan eskrim ya! 🍦</p>
+    <div class="master-container">
+        
+        <div class="scene visible" id="intro-scene">
+            <div class="cover-content">
+                <div class="heart-icon">💝</div>
+                <h1>Ada satu pesan khusus buat pacar tercinta aku...</h1>
+                <p>Cuma boleh dibuka sama kamu ya, Sayang.</p>
+                <button id="btn-open">Buka Pesannya</button>
+            </div>
+        </div>
+
+        <div class="scene hidden" id="main-scene">
+            <div class="apology-content">
+                <h1>Maafin Aku Ya? 🥺</h1>
+                <p class="message">
+                    Hai Sayang... Aku tau aku udah salah banget kemarin dan bikin kamu kecewa.
+                    Aku bener-bener minta maaf ya. Aku janji bakal dengerin kamu lebih baik lagi
+                    dan gak bakal ngulangin kesalahan yang sama.
+                    <br><br>
+                    Aku sayang banget sama kamu. Tolong dimaafin ya? 
+                </p>
+                
+                <div class="buttons">
+                    <button id="btn-yes">Iya, Aku Maafin</button>
+                    <button id="btn-no">Gak Mau!</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene hidden" id="success-scene">
+            <div class="success-content">
+                <h1>Yeay! Makasih Sayang! ❤️</h1>
+                <p>Seneng banget rasanya. I love you so much! Nanti kita jajan eskrim bareng ya! 🍦🍦</p>
+            </div>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
