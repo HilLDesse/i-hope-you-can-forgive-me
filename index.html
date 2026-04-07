@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Pinyon+Script&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@1,500;1,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/animations.css">
@@ -18,56 +18,84 @@
 
     <div class="master-container">
         
-        <div class="scene visible" id="intro-scene">
-            
-            <div class="glass-layer layer-1"></div>
-            <div class="glass-layer layer-2"></div>
-            <div class="glass-glow"></div>
+        <div class="scene visible" id="scene-1">
+            <div class="modern-glow-orb"></div>
             
             <div class="cover-content-complex">
                 <div class="icon-wrapper">
-                    <div class="heart-icon-main">❤️</div>
-                    <div class="heart-pulse-ring"></div>
+                    <div class="heart-icon-main">🤍</div>
+                    <div class="modern-pulse-ring"></div>
+                    <div class="modern-pulse-ring delay"></div>
                 </div>
                 
-                <h1 class="elegant-script-title">Untuk Kekasihku...</h1>
+                <h1 class="modern-script-title">Untuk Kesayanganku...</h1>
+                
+                <div class="divider-line"></div>
                 
                 <p class="darling-message">
                     "With this message, I hope you can forgive me, Darling."
                 </p>
                 
                 <p class="instruction">
-                    Tolong ketuk tombol di bawah untuk membuka isinya...
+                    Tolong sentuh tombol di bawah ini 🥺
                 </p>
                 
-                <button id="btn-open" class="btn-primary-elegant">
-                    <span>Buka Pesan Kasih Sayang</span>
+                <button id="btn-next-1" class="btn-modern-glass">
+                    <span>Buka Pesan Ini</span>
+                    <div class="btn-shine"></div>
                 </button>
             </div>
         </div>
 
-        <div class="scene hidden" id="main-scene">
-            <div class="apology-content">
-                <h1 class="scene-title">Maafin Aku Ya? 🥺</h1>
-                <p class="message serif-text">
-                    Hai Sayang... Aku tau aku udah salah banget kemarin dan bikin kamu kecewa.
-                    Aku bener-bener minta maaf ya. Aku janji bakal dengerin kamu lebih baik lagi
-                    dan gak bakal ngulangin kesalahan yang sama.
-                </p>
-                
-                <div class="buttons">
-                    <button id="btn-yes">Iya, Aku Maafin</button>
-                    <button id="btn-no">Gak Mau!</button>
-                </div>
+        <div class="scene hidden" id="scene-2">
+            <h1 class="scene-title">Maafin Aku Ya? 🥺</h1>
+            <p class="message modern-serif-text">
+                Sayang... Aku bener-bener minta maaf ya karena udah ngelupain hal-hal penting tentang kamu. 
+                Aku sadar banget kebodohanku ini pasti bikin kamu sedih dan ngerasa gak dihargai. 
+                Aku janji bakal lebih merhatiin kamu dan mengingat semua detail kecil tentang kita.
+            </p>
+            <button id="btn-next-2" class="btn-modern-glass" style="padding: 12px 30px; font-size: 0.95rem;">
+                <span>Lanjut baca...</span>
+            </button>
+        </div>
+
+        <div class="scene hidden" id="scene-3">
+            <h1 class="scene-title">Keluarkan Semuanya...</h1>
+            <p class="message modern-serif-text" style="margin-bottom: 15px; font-size: 1rem;">
+                Sebelum kamu mutusin buat maafin aku, kamu boleh keluarin semua unek-unek kamu di sini. 
+                Tulis aja semuanya sayang, aku bakal baca dan resapi tiap kata dari kamu.
+            </p>
+            
+            <textarea id="curhatan" class="modern-textarea" placeholder="Tulis keluh kesahmu di sini... (aku bakal baca kok 🥺)"></textarea>
+            
+            <button id="btn-next-3" class="btn-modern-glass" style="margin-top: 20px;">
+                <span>Kirim & Lanjut</span>
+            </button>
+        </div>
+
+        <div class="scene hidden" id="scene-4">
+            <h1 class="scene-title">Jadi... 🥺</h1>
+            <p class="message modern-serif-text">
+                Setelah baca semua perminta maafanku dan ngeluarin unek-unek kamu... <br><br>
+                Kamu mau kan maafin aku?
+            </p>
+            
+            <div class="buttons">
+                <button id="btn-yes">Iya, Aku Maafin</button>
+                <button id="btn-no">Gak!</button>
             </div>
         </div>
 
-        <div class="scene hidden" id="success-scene">
-            <div class="success-content">
-                <div class="heart-icon-main" style="margin-bottom: 20px;">❤️</div>
-                <h1 class="scene-title">Yeay! Makasih Sayang!</h1>
-                <p class="message serif-text">Seneng banget rasanya. I love you so much! Nanti kita jajan eskrim bareng ya! 🍦🍦</p>
-            </div>
+        <div class="scene hidden" id="scene-5">
+            <div class="heart-icon-main" style="margin-bottom: 20px; font-size: 4rem;">💖</div>
+            <h1 class="scene-title" style="margin-bottom: 10px;">Merci Mon Amour!</h1>
+            
+            <p class="french-quote">"Je t'aime plus qu'hier, moins que demain."</p>
+            
+            <p class="message modern-serif-text" style="font-size: 1.15rem; color: #444;">
+                Makasih banyak ya sayang udah mau maafin aku. Aku sayang banget sama kamu!<br><br>
+                Sebagai gantinya, <b>nanti kita makan sop burtok, ayam recheese, dan eskrim yaaa! 🍜🍗🍦</b>
+            </p>
         </div>
 
     </div>

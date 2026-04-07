@@ -1,68 +1,103 @@
-// Mengambil semua elemen yang dibutuhkan
-const introScene = document.getElementById('intro-scene');
-const mainScene = document.getElementById('main-scene');
-const successScene = document.getElementById('success-scene');
+// --- KONFIGURASI EMAIL FORM SUBMIT ---
+// Masukkan email aktif kamu di bawah ini (Biarkan tanda kutipnya tetap ada)
+const emailPenerima = "hilmikaut@gmail.com"; 
 
-const btnOpen = document.getElementById('btn-open');
+// Mengambil elemen Scene
+const scene1 = document.getElementById('scene-1');
+const scene2 = document.getElementById('scene-2');
+const scene3 = document.getElementById('scene-3');
+const scene4 = document.getElementById('scene-4');
+const scene5 = document.getElementById('scene-5');
+
+// Mengambil elemen Tombol & Input
+const btnNext1 = document.getElementById('btn-next-1');
+const btnNext2 = document.getElementById('btn-next-2');
+const btnNext3 = document.getElementById('btn-next-3');
 const btnYes = document.getElementById('btn-yes');
 const btnNo = document.getElementById('btn-no');
+const inputCurhatan = document.getElementById('curhatan');
 
-// 1. Logika Klik 'Buka Pesan Kasih Sayang' (Transisi halus dari Scene 1 ke 2)
-btnOpen.addEventListener('click', () => {
-    // Jalankan animasi keluar
-    introScene.classList.remove('visible');
-    introScene.classList.add('hidden');
-    
-    // Siapkan scene 2 tanpa animasi dulu
-    mainScene.style.display = 'block';
-    
-    // Beri sedikit jeda agar animasi keluar CSS berjalan penuh
-    setTimeout(() => {
-        introScene.style.display = 'none'; // Benar-benar hilangkan Scene 1
-        
-        // Picu animasi masuk CSS di Scene 2
-        setTimeout(() => {
-            mainScene.classList.remove('hidden');
-            mainScene.classList.add('visible');
-        }, 50);
-    }, 900); // Durasi disamakan dengan `transition` di animations.css (0.9s)
-});
+// Variabel Data
+let keluhKesahText = "";
+let historyTombol = []; 
 
-// 2. Logika Klik 'Iya, Aku Maafin' (Transisi halus dari Scene 2 ke 3)
-btnYes.addEventListener('click', () => {
-    mainScene.classList.remove('visible');
-    mainScene.classList.add('hidden');
+// Fungsi Transisi Antar Halaman
+function changeScene(currentScene, nextScene) {
+    currentScene.classList.remove('visible');
+    currentScene.classList.add('hidden');
     
-    successScene.style.display = 'block';
+    nextScene.style.display = 'block';
     
     setTimeout(() => {
-        mainScene.style.display = 'none';
-        
+        currentScene.style.display = 'none';
         setTimeout(() => {
-            successScene.classList.remove('hidden');
-            successScene.classList.add('visible');
+            nextScene.classList.remove('hidden');
+            nextScene.classList.add('visible');
         }, 50);
-    }, 900);
-});
-
-// 3. Logika Tombol 'Gak Mau' Lari / Menghindar
-btnNo.addEventListener('mouseover', moveButton);
-btnNo.addEventListener('touchstart', moveButton);
-
-function moveButton() {
-    // Transisi cepat saat kabur
-    btnNo.style.transition = 'all 0.15s ease-out'; 
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    
-    const btnWidth = btnNo.offsetWidth;
-    const btnHeight = btnNo.offsetHeight;
-
-    // Batasi area kabur, beri margin 70px agar tidak terlalu mepet pinggir
-    const randomX = Math.floor(Math.random() * (windowWidth - btnWidth - 140)) + 70;
-    const randomY = Math.floor(Math.random() * (windowHeight - btnHeight - 140)) + 70;
-
-    btnNo.style.position = 'fixed'; // Posisi relatif terhadap layar HP/Komputer
-    btnNo.style.left = randomX + 'px';
-    btnNo.style.top = randomY + 'px';
+    }, 800);
 }
+
+// Navigasi Tombol Lanjut
+btnNext1.addEventListener('click', () => changeScene(scene1, scene2));
+btnNext2.addEventListener('click', () => changeScene(scene2, scene3));
+
+btnNext3.addEventListener('click', () => {
+    keluhKesahText = inputCurhatan.value;
+    if (keluhKesahText.trim() === "") {
+        keluhKesahText = "(Dia tidak menulis curhatan apapun)";
+    }
+    changeScene(scene3, scene4);
+});
+
+// Logika Tombol "Gak" (Berubah teks)
+const teksMohon = [
+    "Pliss maafin aku 🥺", 
+    "Beneran gak mau? 😭", 
+    "Ayolah sayang... 🥹", 
+    "Jangan ngambek lagi dong 🥲",
+    "Aku mohon banget... 💔"
+];
+let noClickCount = 0;
+
+btnNo.addEventListener('click', () => {
+    historyTombol.push("Klik Gak");
+    
+    btnNo.innerText = teksMohon[noClickCount % teksMohon.length];
+    noClickCount++;
+    
+    // Animasi getar kecil
+    btnNo.style.transform = "translateX(5px)";
+    setTimeout(() => btnNo.style.transform = "translateX(-5px)", 50);
+    setTimeout(() => btnNo.style.transform = "translateX(0)", 100);
+});
+
+// Logika Tombol "Iya" & Kirim Email Rahasia
+btnYes.addEventListener('click', () => {
+    historyTombol.push("Akhirnya Klik Iya ❤️");
+    
+    btnYes.innerText = "Tunggu sebentar... ⏳";
+    btnYes.disabled = true;
+    btnNo.style.display = 'none'; 
+    
+    let dataKirim = {
+        Pesan_Curhatan: keluhKesahText,
+        Riwayat_Tombol_Ditekan: historyTombol.join(" -> ")
+    };
+
+    fetch(`https://formsubmit.co/ajax/${emailPenerima}`, {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(dataKirim)
+    })
+    .then(response => response.json())
+    .then(data => {
+        changeScene(scene4, scene5);
+    })
+    .catch(error => {
+        console.error("Gagal mengirim", error);
+        changeScene(scene4, scene5);
+    });
+});
